@@ -1,3 +1,5 @@
+
+#Table class
 class Table
     attr_accessor :initialize, :width, :height
 
@@ -35,7 +37,7 @@ def set_grid_value (table, width_or_height)
 end
 
 
-
+#Robot class 
 class Robot
   attr_accessor :initialize, :move, :place, :x, :y, :f
 

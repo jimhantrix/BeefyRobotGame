@@ -37,7 +37,7 @@ def set_grid_value (table, width_or_height)
 end
 
 
-#Robot class 
+#Robot class
 class Robot
   attr_accessor :initialize, :move, :place, :x, :y, :f
 
@@ -96,4 +96,39 @@ def place ( robot, table )
   end
   pre_place_direction(robot)
   puts "Your robot is palced at (#{robot.x}, #{robot.y}) and is facing#{robot.f}"
+end
+
+
+def picture
+
+  puts'                     - -                           '
+  puts'                   |      |                        '
+  puts'                  [| |  | |]                       '
+  puts'                   |      |                        '
+  puts'                   |  -   |                        '
+  puts'                    ------                         '
+  puts'                      | |                          '
+  puts'                   --------                        '
+  puts'                  /   ||    \                      '
+  puts'                 /  |[   ]|  \                     '
+  puts'                /   |     |   \                    '
+  puts'                /|\ |_____|   /|\                  '
+  puts'                    / / \ \                        '
+  puts'                   / /   \ \                       '
+  puts'                   /       \                       '
+  puts'                  /         \                      '
+  puts'                 ()         ()                     '
+
+
+def place3n(table)
+  picture
+  if table.width < 3 || table.height < 3
+    puts "Oops, this secret command won't work while the table is that small"
+    puts "This command will usually place the robot at (3,3) facing NORTH."
+    puts " Try amking the table at least 4 * 4 wide then run PP again."
+  else
+    @x = 3
+    @y = 3
+    @f = "NORTH"
+  end
 end

@@ -7,7 +7,7 @@ class Table
       @width = width
       @height = height
     end
-
+#apply grid value
 def apply_grid_value ( table, width_or_height, new_table_width_or_height )
     if width_or_height == 'width'
       table.width = new_table_width_or_height
@@ -15,7 +15,7 @@ def apply_grid_value ( table, width_or_height, new_table_width_or_height )
       table.height = new_table_width_or_height
     end
 end
-
+#Set grid value
 def set_grid_value (table, width_or_height)
   if width_or_height == 'height'
     puts "-------------------------------------"
@@ -70,7 +70,7 @@ def place ( robot, table )
       retry
     else
       if robot_x_or_y == "x"
-        puts "______________________________________________________"
+        puts "________________________________________________"
         robot.x = robot_co_ord.to_i
       elsif robot_x_or_y == "y"
         robot.y = robot_co_ord.to_i
@@ -98,7 +98,7 @@ def place ( robot, table )
   puts "Your robot is palced at (#{robot.x}, #{robot.y}) and is facing#{robot.f}"
 end
 
-
+# Picture for the grid table
 def picture
 
   puts'                     - -                           '
@@ -118,17 +118,48 @@ def picture
   puts'                   /       \                       '
   puts'                  /         \                      '
   puts'                 ()         ()                     '
+end
 
-
-def place3n(table)
-  picture
-  if table.width < 3 || table.height < 3
-    puts "Oops, this secret command won't work while the table is that small"
-    puts "This command will usually place the robot at (3,3) facing NORTH."
-    puts " Try amking the table at least 4 * 4 wide then run PP again."
-  else
-    @x = 3
-    @y = 3
-    @f = "NORTH"
+  def place3n(table)
+    picture
+    if table.width < 3 || table.height < 3
+      puts "Oops, table is too small for command to work"
+      puts "Try making the table at least 4*4 wide the run PPP again"
+    else
+      @y = 3
+      @y = 3
+      @f = "NORTH"
+    end
   end
+
+
+  def remove_from _table (robot)
+    robot.x = nil
+    robot.y = nil
+    robot.f = nil
+    puts "Your robot is being lifted off while its being resized."
+    puts "Make sure to PLACE your robot again before you."
+  end
+
+  @x_modifier = 0
+  @y_modifier = 0
+
+  def check_direction
+    case
+    when (@f == "NORTH")
+    @x_modifier = 0
+    @y_modifier = 1
+
+  when (@f == "EAST")
+    @x_modifier = 1
+    @y_modiier = 0
+
+  when (@f == "SOUTH")
+    @x_modifier = 0
+    @y_modiier = -1
+
+  when (@f == "WEST")
+    @x_modifier = -1
+    @y_modiier = 0 
+
 end
